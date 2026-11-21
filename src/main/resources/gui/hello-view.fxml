@@ -1,16 +1,199 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="gui.Controller">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+   <top>
+      <HBox prefHeight="85.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏮">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="▶">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏭">
+               <HBox.margin>
+                  <Insets left="10.0" top="15.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Circle fx:id="vinyl" fill="#434343" radius="35.0" stroke="#cfd2cd" strokeType="INSIDE" strokeWidth="2.0">
+               <HBox.margin>
+                  <Insets left="28.0" top="6.0" />
+               </HBox.margin>
+            </Circle>
+            <VBox prefHeight="80.0" prefWidth="235.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="234.0" text="Song" textFill="#cfd2cd">
+                     <font>
+                        <Font name="Century Gothic" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Artist" textFill="#b7bbb4">
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <Label prefHeight="19.0" prefWidth="41.0" text="0:00" textFill="#b7bbb4">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="28.0" />
+               </HBox.margin>
+            </Label>
+            <VBox prefHeight="80.0" prefWidth="350.0">
+               <children>
+                  <Slider prefHeight="14.0" prefWidth="330.0">
+                     <VBox.margin>
+                        <Insets right="10.0" top="30.0" />
+                     </VBox.margin>
+                  </Slider>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <VBox prefHeight="300.0" prefWidth="240.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
+         <children>
+            <ListView prefHeight="450.0" prefWidth="277.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="320.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
+         <children>
+            <ListView prefHeight="450.0" prefWidth="320.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;">
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
+         <children>
+            <ListView prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;">
+               <VBox.margin>
+                  <Insets right="10.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
+               <HBox.margin>
+                  <Insets left="11.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↑">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="37.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↓">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="242.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+               <font>
+                  <Font name="Century Gothic Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
