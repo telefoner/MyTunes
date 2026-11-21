@@ -75,14 +75,14 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets top="28.0" />
+                  <Insets top="32.0" />
                </HBox.margin>
             </Label>
             <VBox prefHeight="80.0" prefWidth="350.0">
                <children>
                   <Slider prefHeight="14.0" prefWidth="330.0">
                      <VBox.margin>
-                        <Insets right="10.0" top="30.0" />
+                        <Insets right="10.0" top="35.0" />
                      </VBox.margin>
                   </Slider>
                </children>
@@ -107,11 +107,19 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="320.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
-            <ListView prefHeight="450.0" prefWidth="320.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;">
-               <VBox.margin>
-                  <Insets right="10.0" />
-               </VBox.margin>
-            </ListView>
+            <HBox prefHeight="450.0" prefWidth="310.0">
+               <children>
+                  <ListView prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;" />
+                  <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="←">
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="7.0" top="200.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>
