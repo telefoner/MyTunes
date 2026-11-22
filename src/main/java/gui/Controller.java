@@ -17,9 +17,9 @@ public class Controller {
 
     @FXML
     public void initialize() {
+        //setting image and animation for vinyl
         Image image = new Image(getClass().getResourceAsStream("/vinyl.png"));
         vinyl.setFill(new ImagePattern(image));
-
         RotateTransition rotation = new RotateTransition(Duration.seconds(4), vinyl);
         rotation.setByAngle(360);
         rotation.setCycleCount(Animation.INDEFINITE);

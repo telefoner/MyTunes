@@ -3,8 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -12,10 +14,12 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+
    <top>
       <HBox prefHeight="85.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏮">
+
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏮">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -23,7 +27,8 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="▶">
+
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="▶">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -31,7 +36,8 @@
                   <Font name="Century Gothic" size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="70.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏭">
+
+            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏭">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -39,11 +45,13 @@
                   <Font size="15.0" />
                </font>
             </Button>
+
             <Circle fx:id="vinyl" fill="#434343" radius="35.0" stroke="#cfd2cd" strokeType="INSIDE" strokeWidth="2.0">
                <HBox.margin>
-                  <Insets left="28.0" top="6.0" />
+                  <Insets left="28.0" top="10.0" />
                </HBox.margin>
             </Circle>
+
             <VBox prefHeight="80.0" prefWidth="235.0">
                <children>
                   <Label prefHeight="26.0" prefWidth="234.0" text="Song" textFill="#cfd2cd">
@@ -51,9 +59,10 @@
                         <Font name="Century Gothic" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="10.0" top="15.0" />
+                        <Insets left="10.0" top="20.0" />
                      </VBox.margin>
                   </Label>
+
                   <Label text="Artist" textFill="#b7bbb4">
                      <font>
                         <Font name="Century Gothic" size="15.0" />
@@ -70,46 +79,109 @@
                   <Insets />
                </opaqueInsets>
             </VBox>
-            <Label prefHeight="19.0" prefWidth="41.0" text="0:00" textFill="#b7bbb4">
+
+            <Label prefHeight="19.0" prefWidth="51.0" text="0:00" textFill="#b7bbb4">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets top="32.0" />
+                  <Insets top="11.0" />
                </HBox.margin>
             </Label>
-            <VBox prefHeight="80.0" prefWidth="350.0">
+
+            <VBox fillWidth="false" prefHeight="86.0" prefWidth="372.0">
                <children>
-                  <Slider prefHeight="14.0" prefWidth="330.0">
+                  <Slider prefHeight="14.0" prefWidth="352.0">
                      <VBox.margin>
-                        <Insets right="10.0" top="35.0" />
+                        <Insets right="10.0" top="13.0" />
                      </VBox.margin>
                   </Slider>
+                  <Label text="Filter" textFill="#b7bbb4">
+                     <font>
+                        <Font name="Century Gothic" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="37.0" prefWidth="354.0">
+                     <children>
+                        <TextField prefHeight="27.0" prefWidth="248.0" promptText="Search by title or artist" style="-fx-background-color: #cfd2cd;">
+                           <HBox.margin>
+                              <Insets top="1.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Century Gothic" size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="2.0" prefWidth="79.0" text="Search">
+                           <HBox.margin>
+                              <Insets left="13.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Century Gothic" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
             </VBox>
+
          </children>
       </HBox>
    </top>
+
    <left>
       <VBox prefHeight="300.0" prefWidth="240.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
-            <ListView prefHeight="450.0" prefWidth="277.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;">
+            <Label text="Playtlists" textFill="#cfd2cd">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+            </Label>
+
+            <TableView prefHeight="465.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
-            </ListView>
+               <columns>
+                  <TableColumn prefWidth="168.00000038146973" text="Name" />
+                  <TableColumn minWidth="0.0" prefWidth="52.79998779296875" text="Songs" />
+               </columns>
+            </TableView>
+
          </children>
       </VBox>
    </left>
+
    <center>
       <VBox prefHeight="200.0" prefWidth="320.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
+            <Label text="Songs in playlist" textFill="#cfd2cd">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+
             <HBox prefHeight="450.0" prefWidth="310.0">
                <children>
-                  <ListView prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;" />
+
+                  <TableView prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+                     <columns>
+                        <TableColumn prefWidth="145.5999755859375" text="Title" />
+                        <TableColumn prefWidth="62.4000244140625" text="Artist" />
+                        <TableColumn prefWidth="54.39996337890625" text="Time" />
+                     </columns></TableView>
+
                   <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="←">
                      <font>
                         <Font name="Century Gothic" size="15.0" />
@@ -118,90 +190,120 @@
                         <Insets left="7.0" top="200.0" />
                      </HBox.margin>
                   </Button>
+
                </children>
             </HBox>
+
          </children>
       </VBox>
    </center>
+
    <right>
       <VBox prefHeight="300.0" prefWidth="350.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
-            <ListView prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-background-color: cfd2cd;">
+            <Label text="Songs" textFill="#cfd2cd">
+               <font>
+                  <Font name="Century Gothic" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+
+            <TableView prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets right="10.0" />
                </VBox.margin>
-            </ListView>
+               <columns>
+                  <TableColumn prefWidth="137.59996948242042" text="Title" />
+                  <TableColumn prefWidth="89.5999755859375" text="Artist" />
+                  <TableColumn prefWidth="71.1998291015625" text="Genre" />
+                  <TableColumn prefWidth="42.4000244140625" text="Time" />
+               </columns>
+            </TableView>
+
          </children>
       </VBox>
    </right>
+
    <bottom>
-      <HBox prefHeight="49.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
+      <HBox prefHeight="41.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
                <HBox.margin>
-                  <Insets left="11.0" top="5.0" />
+                  <Insets left="11.0" top="6.0" />
                </HBox.margin>
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
                <HBox.margin>
-                  <Insets left="10.0" top="5.0" />
+                  <Insets left="10.0" top="6.0" />
                </HBox.margin>
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
                <HBox.margin>
-                  <Insets left="10.0" top="5.0" />
+                  <Insets left="10.0" top="6.0" />
                </HBox.margin>
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↑">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="37.0" top="5.0" />
+                  <Insets left="37.0" top="6.0" />
                </HBox.margin>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↓">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" top="5.0" />
+                  <Insets left="10.0" top="6.0" />
                </HBox.margin>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="242.0" top="5.0" />
+                  <Insets left="242.0" top="6.0" />
                </HBox.margin>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" top="5.0" />
+                  <Insets left="10.0" top="6.0" />
                </HBox.margin>
             </Button>
+
             <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="10.0" top="5.0" />
+                  <Insets left="10.0" top="6.0" />
                </HBox.margin>
             </Button>
+
          </children>
       </HBox>
    </bottom>
+
 </BorderPane>
