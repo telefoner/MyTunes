@@ -146,7 +146,7 @@
                </font>
             </Label>
 
-            <TableView prefHeight="465.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+            <TableView fx:id="PlayList" prefHeight="465.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
@@ -175,7 +175,7 @@
             <HBox prefHeight="450.0" prefWidth="310.0">
                <children>
 
-                  <TableView prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+                  <TableView fx:id="songsInPlaylist" prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                      <columns>
                         <TableColumn prefWidth="145.5999755859375" text="Title" />
                         <TableColumn prefWidth="62.4000244140625" text="Artist" />
@@ -210,7 +210,7 @@
                </VBox.margin>
             </Label>
 
-            <TableView prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+            <TableView fx:id="Songs" prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets right="10.0" />
                </VBox.margin>
@@ -230,7 +230,7 @@
       <HBox prefHeight="41.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
+            <Button fx:id="newBtn" mnemonicParsing="false" onAction="#newButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
                <HBox.margin>
                   <Insets left="11.0" top="6.0" />
                </HBox.margin>
@@ -239,7 +239,7 @@
                </font>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
+            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editbuttonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
                <HBox.margin>
                   <Insets left="10.0" top="6.0" />
                </HBox.margin>
@@ -248,7 +248,7 @@
                </font>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+            <Button fx:id="hik" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
                <HBox.margin>
                   <Insets left="10.0" top="6.0" />
                </HBox.margin>
@@ -257,7 +257,7 @@
                </font>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↑">
+            <Button fx:id="upBtn" mnemonicParsing="false" onAction="#upButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↑">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -266,7 +266,7 @@
                </HBox.margin>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↓">
+            <Button fx:id="downbtn" mnemonicParsing="false" onAction="#downButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↓">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -275,7 +275,7 @@
                </HBox.margin>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
+            <Button fx:id="newbtn" mnemonicParsing="false" onAction="#newBtnClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -284,7 +284,7 @@
                </HBox.margin>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
+            <Button fx:id="editbtn" mnemonicParsing="false" onAction="#editButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -293,7 +293,7 @@
                </HBox.margin>
             </Button>
 
-            <Button mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+            <Button fx:id="delbtn" mnemonicParsing="false" onAction="#deleteButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
