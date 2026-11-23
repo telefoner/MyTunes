@@ -18,6 +18,8 @@ import javafx.animation.Interpolator;
 
 public class Controller {
 
+    private RotateTransition rotation;
+
     @FXML
     public Slider timeSlider;
 
@@ -62,11 +64,10 @@ public class Controller {
         //setting image and animation for vinyl
         Image image = new Image(getClass().getResourceAsStream("/vinyl.png"));
         vinyl.setFill(new ImagePattern(image));
-        RotateTransition rotation = new RotateTransition(Duration.seconds(4), vinyl);
+        rotation = new RotateTransition(Duration.seconds(4), vinyl);
         rotation.setByAngle(360);
         rotation.setCycleCount(Animation.INDEFINITE);
         rotation.setInterpolator(Interpolator.LINEAR);
-        rotation.play();
     }
 
     public void editbuttonClicked(ActionEvent actionEvent) {
@@ -94,6 +95,15 @@ public class Controller {
     }
 
     public void btnPlayClicked(ActionEvent actionEvent) {
+        //set spinning animation
+        if (btnPlay.getText().equals("▶")) {
+            btnPlay.setText("⏸");
+            rotation.play();
+        } else {
+            btnPlay.setText("▶");
+            rotation.stop();
+        }
+
     }
 
     public void btnNextSong(ActionEvent actionEvent) {
