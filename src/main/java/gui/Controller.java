@@ -5,7 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -14,15 +17,43 @@ import javafx.animation.Interpolator;
 
 
 public class Controller {
+
+    @FXML
+    public Slider timeSlider;
+
+    @FXML
+    public TableView playlistList;
+
+    @FXML
+    public TableView songsInPlaylist;
+
+    @FXML
+    public TableView songsList;
+
+    @FXML
+    public Label songLbl;
+
+    @FXML
+    public Button btnPlay;
+
+    @FXML
+    public Label artistLbl;
+
+    @FXML
+    public Label songTime;
+
     @FXML
     private Button upBtn;
-    @FXML FXML
+
+    @FXML
     private Button downbtn;
 
     @FXML
     private Button newBtn;
+
     @FXML
     private Button btnEdit;
+
     @FXML
     private Circle vinyl;
 
@@ -57,5 +88,57 @@ public class Controller {
     }
 
     public void deleteButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void btnLastSong(ActionEvent actionEvent) {
+    }
+
+    public void btnPlayClicked(ActionEvent actionEvent) {
+    }
+
+    public void btnNextSong(ActionEvent actionEvent) {
+    }
+
+    public void timeSet(MouseDragEvent mouseDragEvent) {
+    }
+
+    public void onTextInput(ActionEvent actionEvent) {
+
+    }
+
+    public void onBtnSearchClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void newBtnPlaylstClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void editBtnPlaylstClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void delBtnPlaylstClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void upBtnClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void downBtnClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void newBtnSongsClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void editButtonSongsClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void deleteButtonSongsClicked(ActionEvent actionEvent) {
+
     }
 }
