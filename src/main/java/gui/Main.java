@@ -1,13 +1,28 @@
 package gui;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-public class Main extends Application {
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
+        SQLServerDataSource ds = new SQLServerDataSource();
+        ds.setServerName("EASV-DB4");
+        ds.setPortNumber(1433);
+        ds.setDatabaseName("10.176.111.34");
+        ds.setUser("CS2026b_e_11");
+        ds.setPassword("CS2026bE11#26");
+        ds.setTrustServerCertificate(true);
+    }
+}
+
+/*public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
@@ -17,4 +32,4 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.show();
     }
-}
+*/
