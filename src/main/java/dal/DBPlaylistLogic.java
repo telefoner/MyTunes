@@ -5,6 +5,7 @@ import java.sql.SQLException;
 public class DBPlaylistLogic {
 
     public void createPlaylist() throws SQLException {
+        return;
 
     }
 
