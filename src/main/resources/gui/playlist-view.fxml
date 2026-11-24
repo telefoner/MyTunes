@@ -43,7 +43,7 @@
    <bottom>
       <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="28.0" prefWidth="72.0" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Cancel">
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="28.0" prefWidth="72.0" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Cancel">
                <HBox.margin>
                   <Insets left="402.0" top="40.0" />
                </HBox.margin>
@@ -51,7 +51,7 @@
                   <Font name="Century Gothic" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="28.0" prefWidth="72.0" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Save">
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="28.0" prefWidth="72.0" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Save">
                <HBox.margin>
                   <Insets left="10.0" top="40.0" />
                </HBox.margin>

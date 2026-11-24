@@ -2,6 +2,7 @@ package gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -16,6 +17,10 @@ public class PlaylistController {
 
     @FXML
     private Label playlistLbl;
+    @FXML
+    private Button btnCancel;
+    @FXML
+    private Button btnSave;
 
     public void setMode(Controller.WindowMode mode, Stage stage) {
         this.mode = mode;
@@ -31,9 +36,11 @@ public class PlaylistController {
 
     @FXML
     public void btnSaveClicked(ActionEvent actionEvent) {
+        ((Stage)btnSave.getScene().getWindow()).close();
     }
 
     @FXML
     public void btnCancelClicked(ActionEvent actionEvent) {
+        ((Stage)btnCancel.getScene().getWindow()).close();
     }
 }
