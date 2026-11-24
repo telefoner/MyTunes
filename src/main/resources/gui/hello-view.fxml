@@ -91,7 +91,7 @@
 
             <VBox fillWidth="false" prefHeight="86.0" prefWidth="372.0">
                <children>
-                  <Slider fx:id="timeSlider" onMouseDragReleased="#timeSet" prefHeight="14.0" prefWidth="352.0">
+                  <Slider fx:id="timeSlider" blendMode="HARD_LIGHT" onMouseDragReleased="#timeSet" prefHeight="14.0" prefWidth="352.0">
                      <VBox.margin>
                         <Insets right="10.0" top="13.0" />
                      </VBox.margin>
@@ -151,8 +151,8 @@
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
                <columns>
-                  <TableColumn prefWidth="168.00000038146973" text="Name" />
-                  <TableColumn minWidth="0.0" prefWidth="52.79998779296875" text="Songs" />
+                  <TableColumn editable="false" prefWidth="168.00000038146973" text="Name" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="52.79998779296875" text="Songs" />
                </columns>
             </TableView>
 
@@ -177,9 +177,9 @@
 
                   <TableView fx:id="songsInPlaylist" prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                      <columns>
-                        <TableColumn prefWidth="145.5999755859375" text="Title" />
-                        <TableColumn prefWidth="62.4000244140625" text="Artist" />
-                        <TableColumn prefWidth="54.39996337890625" text="Time" />
+                        <TableColumn editable="false" prefWidth="145.5999755859375" text="Title" />
+                        <TableColumn editable="false" prefWidth="62.4000244140625" text="Artist" />
+                        <TableColumn editable="false" prefWidth="54.39996337890625" text="Time" />
                      </columns></TableView>
 
                   <Button mnemonicParsing="false" onAction="#btnSongToPlaylist" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="←">
@@ -215,10 +215,10 @@
                   <Insets right="10.0" />
                </VBox.margin>
                <columns>
-                  <TableColumn prefWidth="137.59996948242042" text="Title" />
-                  <TableColumn prefWidth="89.5999755859375" text="Artist" />
-                  <TableColumn prefWidth="71.1998291015625" text="Genre" />
-                  <TableColumn prefWidth="42.4000244140625" text="Time" />
+                  <TableColumn editable="false" prefWidth="137.59996948242042" text="Title" />
+                  <TableColumn editable="false" prefWidth="89.5999755859375" text="Artist" />
+                  <TableColumn editable="false" prefWidth="71.1998291015625" text="Genre" />
+                  <TableColumn editable="false" prefWidth="42.4000244140625" text="Time" />
                </columns>
             </TableView>
 

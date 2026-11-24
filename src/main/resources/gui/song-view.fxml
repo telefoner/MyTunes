@@ -90,13 +90,19 @@
          <children>
             <TextField fx:id="titleField" prefHeight="26.0" prefWidth="470.0" promptText="Title of the song...">
                <VBox.margin>
-                  <Insets top="22.0" />
+                  <Insets top="24.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
             </TextField>
             <TextField fx:id="artistField" prefWidth="470.0" promptText="Artist of the song...">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
             </TextField>
             <ComboBox fx:id="genreField" prefWidth="470.0" promptText="Select the genre of the song...">
                <VBox.margin>
@@ -107,17 +113,23 @@
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
             </TextField>
             <HBox fillHeight="false" prefHeight="62.0" prefWidth="487.0">
                <children>
                   <TextField fx:id="fileField" prefWidth="360.0" promptText="Path to your song file...">
                      <HBox.margin>
-                        <Insets top="26.0" />
+                        <Insets top="30.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
                   </TextField>
                   <Button mnemonicParsing="false" onAction="#onChooseBtnClicked" prefHeight="28.0" prefWidth="93.0" text="Choose...">
                      <HBox.margin>
-                        <Insets left="15.0" top="25.0" />
+                        <Insets left="15.0" top="27.0" />
                      </HBox.margin>
                      <font>
                         <Font name="Century Gothic" size="14.0" />

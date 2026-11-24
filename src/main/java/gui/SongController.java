@@ -46,14 +46,16 @@ public class SongController {
     private Controller.WindowMode mode;
 
 
-    public void setMode(Controller.WindowMode mode){
+    public void setMode(Controller.WindowMode mode, Stage stage){
         this.mode = mode;
         if (mode == Controller.WindowMode.create) {
+            stage.setTitle("Add new song");
             titleField.setText("");
             artistField.setText("");
             timeField.setText("");
             fileField.setText("");
         } else {
+            stage.setTitle("Edit existing song");
             lblSong.setText("Edit existing song");
             titleField.setText(title);
             artistField.setText(artist);

@@ -61,10 +61,25 @@ public class Controller {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("song-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            SongController controller = fxmlLoader.getController();
-            controller.setMode(mode);
             Stage stage = new Stage();
-            stage.setTitle("Add new song");
+            SongController controller = fxmlLoader.getController();
+            controller.setMode(mode, stage);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch(IOException e){
+            System.out.println("Failed to open song window: " + e.getMessage());
+        }
+    }
+
+    public void openPlaylistWindow(Controller.WindowMode mode){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("playlist-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+            PlaylistController controller = fxmlLoader.getController();
+            controller.setMode(mode, stage);
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
@@ -148,10 +163,12 @@ public class Controller {
 
     @FXML
     private void btnNewPlaylstClicked(ActionEvent actionEvent) {
+        openPlaylistWindow(WindowMode.create);
     }
 
     @FXML
     private void btnEditPlaylstClicked(ActionEvent actionEvent) {
+        openPlaylistWindow(WindowMode.edit);
     }
 
     @FXML
