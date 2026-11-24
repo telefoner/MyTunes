@@ -14,7 +14,7 @@ public class Playlist {
         this.name = name;
     }
 
-    public PlayList(String name){
+    public Playlist(String name){
         this(0,name);
     }
 
@@ -23,6 +23,14 @@ public class Playlist {
     }
 
     public void setId(int id){
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -33,4 +41,5 @@ public class Playlist {
     public int getSongCount(){
         return songs.size();
     }
+
 }

@@ -69,8 +69,10 @@ public class Song {
         this.filePath = filePath;
     }
 
-    public String getFormattedDuration(){
-        return String.format("%d:%02d", durationSeconds / 60, durationSeconds, durationSeconds % 60);
+    public String getFormattedDuration() {
+        return String.format("%d:%02d",
+                durationSeconds / 60,
+                durationSeconds % 60);
     }
 
 
