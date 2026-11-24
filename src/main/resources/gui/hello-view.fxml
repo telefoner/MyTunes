@@ -274,7 +274,7 @@
                   <Insets left="10.0" top="6.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#btnDelSongPlaylstClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+            <Button mnemonicParsing="false" onAction="#btnDelSongPlaylstClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Remove" textFill="#d74141">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
@@ -288,7 +288,7 @@
                   <Font name="Century Gothic" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="162.0" top="6.0" />
+                  <Insets left="149.0" top="6.0" />
                </HBox.margin>
             </Button>
 

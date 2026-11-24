@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #162645;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddSongController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #162645;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SongController">
    <top>
-      <Label alignment="TOP_CENTER" text="Add new song" textFill="#cfd2cd" BorderPane.alignment="TOP_LEFT">
+      <Label fx:id="lblSong" alignment="TOP_CENTER" text="Add new song" textFill="#cfd2cd" BorderPane.alignment="TOP_LEFT">
          <font>
             <Font name="Century Gothic" size="24.0" />
          </font>
@@ -88,29 +88,29 @@
    <center>
       <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="titleField" prefHeight="26.0" prefWidth="470.0">
+            <TextField fx:id="titleField" prefHeight="26.0" prefWidth="470.0" promptText="Title of the song...">
                <VBox.margin>
                   <Insets top="22.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="artistField" prefWidth="470.0">
+            <TextField fx:id="artistField" prefWidth="470.0" promptText="Artist of the song...">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </TextField>
-            <ComboBox fx:id="GenreField" prefWidth="470.0">
+            <ComboBox fx:id="genreField" prefWidth="470.0" promptText="Select the genre of the song...">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </ComboBox>
-            <TextField fx:id="timeField" prefWidth="470.0">
+            <TextField fx:id="timeField" prefWidth="470.0" promptText="Duration of the song...">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>
             </TextField>
             <HBox fillHeight="false" prefHeight="62.0" prefWidth="487.0">
                <children>
-                  <TextField fx:id="fileField" prefWidth="360.0">
+                  <TextField fx:id="fileField" prefWidth="360.0" promptText="Path to your song file...">
                      <HBox.margin>
                         <Insets top="26.0" />
                      </HBox.margin>

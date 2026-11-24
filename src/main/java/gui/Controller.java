@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.paint.ImagePattern;
@@ -22,6 +19,10 @@ import java.io.IOException;
 
 
 public class Controller {
+
+    public enum WindowMode{
+        create, edit
+    }
 
     private RotateTransition rotation;
 
@@ -52,8 +53,28 @@ public class Controller {
     @FXML
     private Circle vinyl;
 
-    @FXML
-    private void initialize() {
+    public void songDuration() {
+        //songTime.setText(getFormatedDuration());
+    }
+
+    public void openSongWindow(WindowMode mode){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("song-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            SongController controller = fxmlLoader.getController();
+            controller.setMode(mode);
+            Stage stage = new Stage();
+            stage.setTitle("Add new song");
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch(IOException e){
+            System.out.println("Failed to open song window: " + e.getMessage());
+        }
+    }
+
+    public void initialize() {
         //setting image and animation for vinyl
         Image image = new Image(getClass().getResourceAsStream("/vinyl.png"));
         vinyl.setFill(new ImagePattern(image));
@@ -96,57 +117,57 @@ public class Controller {
 
     @FXML
     private void btnNewSongsClicked(ActionEvent actionEvent) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("addsong-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            Stage stage = new Stage();
-            stage.setTitle("Add new song");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        }
-        catch(IOException e){
-            System.out.println("Failed to open song window: " + e.getMessage());
-        }
+        openSongWindow(WindowMode.create);
     }
 
     @FXML
-    public void btnUpClicked(ActionEvent actionEvent) {
+    private void btnUpClicked(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnSongToPlaylist(ActionEvent actionEvent) {
+    private void btnSongToPlaylist(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnDelSongsClicked(ActionEvent actionEvent) {
+    private void btnDelSongsClicked(ActionEvent actionEvent) {
+        showConfirmation("Are you sure you want to delete the song?", "The song will be deleted from the list, but you could add it again later.");
     }
 
     @FXML
-    public void btnDelPlaylstClicked(ActionEvent actionEvent) {
+    private void btnDelPlaylstClicked(ActionEvent actionEvent) {
+        showConfirmation("Are you sure you want to delete selected playlist?", "The deleted playlist won't delete the songs from your machine");
     }
 
     @FXML
-    public void btnDownClicked(ActionEvent actionEvent) {
+    private void btnDownClicked(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnSearchClicked(ActionEvent actionEvent) {
+    private void btnSearchClicked(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnNewPlaylstClicked(ActionEvent actionEvent) {
+    private void btnNewPlaylstClicked(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnEditPlaylstClicked(ActionEvent actionEvent) {
+    private void btnEditPlaylstClicked(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnDelSongPlaylstClicked(ActionEvent actionEvent) {
+    private void btnDelSongPlaylstClicked(ActionEvent actionEvent) {
     }
 
     @FXML
-    public void btnEditSongsClicked(ActionEvent actionEvent) {
+    private void btnEditSongsClicked(ActionEvent actionEvent) {
+        openSongWindow(WindowMode.edit);
+    }
+
+    private void showConfirmation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
