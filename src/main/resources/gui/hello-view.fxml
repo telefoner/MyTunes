@@ -19,7 +19,7 @@
       <HBox prefHeight="85.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
 
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏮">
+            <Button mnemonicParsing="false" onAction="#btnLastSong" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏮">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -28,7 +28,7 @@
                </font>
             </Button>
 
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="▶">
+            <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayClicked" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="▶">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -37,7 +37,7 @@
                </font>
             </Button>
 
-            <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏭">
+            <Button mnemonicParsing="false" onAction="#btnNextSong" prefHeight="60.0" prefWidth="80.0" style="-fx-background-radius: 30; -fx-background-color: cfd2cd;" text="⏭">
                <HBox.margin>
                   <Insets left="10.0" top="15.0" />
                </HBox.margin>
@@ -54,7 +54,7 @@
 
             <VBox prefHeight="80.0" prefWidth="235.0">
                <children>
-                  <Label prefHeight="26.0" prefWidth="234.0" text="Song" textFill="#cfd2cd">
+                  <Label fx:id="songLbl" prefHeight="26.0" prefWidth="234.0" text="Song" textFill="#cfd2cd">
                      <font>
                         <Font name="Century Gothic" size="20.0" />
                      </font>
@@ -63,7 +63,7 @@
                      </VBox.margin>
                   </Label>
 
-                  <Label text="Artist" textFill="#b7bbb4">
+                  <Label fx:id="artistLbl" text="Artist" textFill="#b7bbb4">
                      <font>
                         <Font name="Century Gothic" size="15.0" />
                      </font>
@@ -80,7 +80,7 @@
                </opaqueInsets>
             </VBox>
 
-            <Label prefHeight="19.0" prefWidth="51.0" text="0:00" textFill="#b7bbb4">
+            <Label fx:id="songTime" prefHeight="19.0" prefWidth="51.0" text="0:00" textFill="#b7bbb4">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -91,7 +91,7 @@
 
             <VBox fillWidth="false" prefHeight="86.0" prefWidth="372.0">
                <children>
-                  <Slider prefHeight="14.0" prefWidth="352.0">
+                  <Slider fx:id="timeSlider" onMouseDragReleased="#timeSet" prefHeight="14.0" prefWidth="352.0">
                      <VBox.margin>
                         <Insets right="10.0" top="13.0" />
                      </VBox.margin>
@@ -106,7 +106,7 @@
                   </Label>
                   <HBox prefHeight="37.0" prefWidth="354.0">
                      <children>
-                        <TextField prefHeight="27.0" prefWidth="248.0" promptText="Search by title or artist" style="-fx-background-color: #cfd2cd;">
+                        <TextField onAction="#onTextInput" prefHeight="27.0" prefWidth="248.0" promptText="Search by title or artist" style="-fx-background-color: #cfd2cd;">
                            <HBox.margin>
                               <Insets top="1.0" />
                            </HBox.margin>
@@ -114,7 +114,7 @@
                               <Font name="Century Gothic" size="12.0" />
                            </font>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="2.0" prefWidth="79.0" text="Search">
+                        <Button mnemonicParsing="false" onAction="#onBtnSearchClicked" prefHeight="2.0" prefWidth="79.0" text="Search">
                            <HBox.margin>
                               <Insets left="13.0" />
                            </HBox.margin>
@@ -137,7 +137,7 @@
    <left>
       <VBox prefHeight="300.0" prefWidth="240.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
-            <Label text="Playtlists" textFill="#cfd2cd">
+            <Label text="Playlists" textFill="#cfd2cd">
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" />
                </VBox.margin>
@@ -146,7 +146,7 @@
                </font>
             </Label>
 
-            <TableView fx:id="PlayList" prefHeight="465.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+            <TableView fx:id="playlistList" prefHeight="465.0" prefWidth="219.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>
@@ -210,7 +210,7 @@
                </VBox.margin>
             </Label>
 
-            <TableView fx:id="Songs" prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+            <TableView fx:id="songsList" prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets right="10.0" />
                </VBox.margin>
@@ -230,7 +230,7 @@
       <HBox prefHeight="41.0" prefWidth="900.0" style="-fx-background-color: #162645;" BorderPane.alignment="CENTER">
          <children>
 
-            <Button fx:id="newBtn" mnemonicParsing="false" onAction="#newButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
+            <Button mnemonicParsing="false" onAction="#newBtnPlaylstClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
                <HBox.margin>
                   <Insets left="11.0" top="6.0" />
                </HBox.margin>
@@ -239,7 +239,7 @@
                </font>
             </Button>
 
-            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editbuttonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
+            <Button mnemonicParsing="false" onAction="#editBtnPlaylstClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
                <HBox.margin>
                   <Insets left="10.0" top="6.0" />
                </HBox.margin>
@@ -248,7 +248,7 @@
                </font>
             </Button>
 
-            <Button fx:id="hik" mnemonicParsing="false" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+            <Button mnemonicParsing="false" onAction="#delBtnPlaylstClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
                <HBox.margin>
                   <Insets left="10.0" top="6.0" />
                </HBox.margin>
@@ -257,7 +257,7 @@
                </font>
             </Button>
 
-            <Button fx:id="upBtn" mnemonicParsing="false" onAction="#upButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↑">
+            <Button mnemonicParsing="false" onAction="#upBtnClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↑">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -266,7 +266,7 @@
                </HBox.margin>
             </Button>
 
-            <Button fx:id="downbtn" mnemonicParsing="false" onAction="#downButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↓">
+            <Button mnemonicParsing="false" onAction="#downBtnClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="↓">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -275,7 +275,7 @@
                </HBox.margin>
             </Button>
 
-            <Button fx:id="newbtn" mnemonicParsing="false" onAction="#newBtnClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
+            <Button mnemonicParsing="false" onAction="#newBtnSongsClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="New">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -284,7 +284,7 @@
                </HBox.margin>
             </Button>
 
-            <Button fx:id="editbtn" mnemonicParsing="false" onAction="#editButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
+            <Button mnemonicParsing="false" onAction="#editButtonSongsClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Edit">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font>
@@ -293,7 +293,7 @@
                </HBox.margin>
             </Button>
 
-            <Button fx:id="delbtn" mnemonicParsing="false" onAction="#deleteButtonClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
+            <Button mnemonicParsing="false" onAction="#deleteButtonSongsClicked" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Delete" textFill="#d74141">
                <font>
                   <Font name="Century Gothic Bold" size="15.0" />
                </font>
