@@ -1,12 +1,10 @@
 package gui;
 
 import javafx.animation.RotateTransition;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.paint.ImagePattern;
@@ -14,6 +12,14 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
+import be.Song;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
+
+import java.util.Locale;
 
 
 public class Controller {
@@ -60,6 +66,18 @@ public class Controller {
     private Circle vinyl;
 
     @FXML
+    private TableColumn<Song, String> songTitleColumn;
+
+    @FXML
+    private TableColumn<Song, String> songArtistColumn;
+
+    @FXML
+    private TableColumn<Song, String> songGenreColumn;
+
+    @FXML
+    private TableColumn<Song, String> songTimeColumn;
+
+    @FXML
     public void initialize() {
         //setting image and animation for vinyl
         Image image = new Image(getClass().getResourceAsStream("/vinyl.png"));
@@ -68,7 +86,45 @@ public class Controller {
         rotation.setByAngle(360);
         rotation.setCycleCount(Animation.INDEFINITE);
         rotation.setInterpolator(Interpolator.LINEAR);
+
+        songTitleColumn.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue().getTitle()));
+
+        songArtistColumn.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue().getArtist()));
+
+        songGenreColumn.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue().getCategory()));
+
+        songTimeColumn.setCellValueFactory(cell ->
+                new SimpleStringProperty(cell.getValue().getFormattedDuration()));
+
+        SortedList<Song> sortedSongs =
+                new SortedList<>(filteredSongs);
+
+        sortedSongs.comparatorProperty()
+                .bind(songsTable.comparatorProperty());
+
+        songsTable.setItems(sortedSongs);
+
     }
+
+    @FXML
+    private TextField filterTextField;
+
+    @FXML
+    private Button filterButton;
+
+    @FXML
+    private TableView<Song> songsTable;
+
+    private final ObservableList<Song> allSongs =
+            FXCollections.observableArrayList();
+
+    private final FilteredList<Song> filteredSongs =
+            new FilteredList<>(allSongs, song -> true);
+
+    private boolean filterActive = false;
 
     public void editbuttonClicked(ActionEvent actionEvent) {
     }
@@ -151,4 +207,47 @@ public class Controller {
     public void deleteButtonSongsClicked(ActionEvent actionEvent) {
 
     }
+
+
+    @FXML
+    private void handleFilterClear() {
+
+        // If filter is active, clear it
+        if (filterActive) {
+            filteredSongs.setPredicate(song -> true);
+
+            filterTextField.clear();
+            filterButton.setText("Filter");
+            filterActive = false;
+            return;
+        }
+
+        // Get the search text
+        String query = filterTextField.getText()
+                .trim()
+                .toLowerCase(Locale.ROOT);
+
+        if (query.isEmpty()) {
+            return;
+        }
+
+        // Filter by title or artist
+        filteredSongs.setPredicate(song -> {
+
+            String title = song.getTitle() == null
+                    ? ""
+                    : song.getTitle().toLowerCase(Locale.ROOT);
+
+            String artist = song.getArtist() == null
+                    ? ""
+                    : song.getArtist().toLowerCase(Locale.ROOT);
+
+            return title.contains(query)
+                    || artist.contains(query);
+        });
+
+        filterButton.setText("Clear");
+        filterActive = true;
+    }
+
 }
