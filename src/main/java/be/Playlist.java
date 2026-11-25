@@ -26,10 +26,6 @@ public class Playlist {
         this.id = id;
     }
 
-    public List<Song> getSongs(){
-        return songs;
-    }
-
     public String getName() {
         return name;
     }
@@ -38,7 +34,12 @@ public class Playlist {
         this.name = name;
     }
 
+    public List<Song> getSongs(){
+        return songs;
+    }
+
     public int getSongCount(){
         return songs.size();
     }
+
 }
