@@ -65,15 +65,6 @@ public class Controller {
     private Label songTime;
 
     @FXML
-    private Button upBtn;
-    @FXML FXML
-    private Button downbtn;
-
-    @FXML
-    private Button newBtn;
-    @FXML
-    private Button btnEdit;
-    @FXML
     private Circle vinyl;
 
     public void songDuration() {
@@ -209,26 +200,5 @@ public class Controller {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
-    }
-
-    public void editbuttonClicked(ActionEvent actionEvent) {
-    }
-
-    public void newButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void upButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void downButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void newBtnClicked(ActionEvent actionEvent) {
-    }
-
-    public void editButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void deleteButtonClicked(ActionEvent actionEvent) {
     }
 }
