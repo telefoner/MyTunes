@@ -1,5 +1,7 @@
 package gui;
 
+import be.Playlist;
+import be.Song;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +22,18 @@ import java.io.IOException;
 
 public class Controller {
 
+    @FXML
+    private TableColumn<Song, String> titleColumnSongs;
+
+    @FXML
+    private TableColumn<Song, String> artistColumnSongs;
+
+    @FXML
+    private TableColumn<Song, Double> timeColumnSong;
+
+    @FXML
+    private TableColumn<Song, String> genreColumnSongs;
+
     public enum WindowMode{
         create, edit
     }
@@ -30,13 +44,13 @@ public class Controller {
     private Slider timeSlider;
 
     @FXML
-    private TableView playlistList;
+    private TableView<Playlist> playlistList;
 
     @FXML
-    private TableView songsInPlaylist;
+    private TableView<Song> songsInPlaylist;
 
     @FXML
-    private TableView songsList;
+    private TableView<Song> songsList;
 
     @FXML
     private Label songLbl;

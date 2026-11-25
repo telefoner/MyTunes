@@ -1,5 +1,13 @@
 package bll;
 
-public class SongLogic {
+import be.Song;
 
+public class SongLogic {
+    //public Song saveSong() {
+
+    //}
+
+    //public Song getSong() {
+
+    //}
 }
