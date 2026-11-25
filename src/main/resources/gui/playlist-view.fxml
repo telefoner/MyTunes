@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #162645;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.PlaylistController">
+   <center>
+      <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="playlistLbl" alignment="CENTER" text="New playlist" textFill="#cfd2cd">
+               <font>
+                  <Font name="Century Gothic" size="35.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" top="80.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Enter the name for your playlist:" textFill="#cfd2cd">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="40.0" top="25.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="inputPlaylistName" prefHeight="26.0" prefWidth="520.0" promptText="Enter the name for your playlist..." style="-fx-background-color: #cfd2cd;">
+               <VBox.margin>
+                  <Insets left="40.0" top="40.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#btnCancelClicked" prefHeight="28.0" prefWidth="72.0" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Cancel">
+               <HBox.margin>
+                  <Insets left="402.0" top="40.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveClicked" prefHeight="28.0" prefWidth="72.0" style="-fx-background-radius: 5; -fx-background-color: cfd2cd;" text="Save">
+               <HBox.margin>
+                  <Insets left="10.0" top="40.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

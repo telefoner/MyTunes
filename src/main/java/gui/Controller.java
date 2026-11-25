@@ -1,60 +1,68 @@
 package gui;
 
+import be.Playlist;
+import be.Song;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 
+import java.io.IOException;
+
 
 public class Controller {
+
+    @FXML
+    private TableColumn<Song, String> titleColumnSongs;
+
+    @FXML
+    private TableColumn<Song, String> artistColumnSongs;
+
+    @FXML
+    private TableColumn<Song, Double> timeColumnSong;
+
+    @FXML
+    private TableColumn<Song, String> genreColumnSongs;
+
+    public enum WindowMode{
+        create, edit
+    }
 
     private RotateTransition rotation;
 
     @FXML
-    public Slider timeSlider;
+    private Slider timeSlider;
 
     @FXML
-    public TableView playlistList;
+    private TableView<Playlist> playlistList;
 
     @FXML
-    public TableView songsInPlaylist;
+    private TableView<Song> songsInPlaylist;
 
     @FXML
-    public TableView songsList;
+    private TableView<Song> songsList;
 
     @FXML
-    public Label songLbl;
+    private Label songLbl;
 
     @FXML
-    public Button btnPlay;
+    private Button btnPlay;
 
     @FXML
-    public Label artistLbl;
+    private Label artistLbl;
 
     @FXML
-    public Label songTime;
-
-    @FXML
-    private Button upBtn;
-
-    @FXML
-    private Button downbtn;
-
-    @FXML
-    private Button newBtn;
-
-    @FXML
-    private Button btnEdit;
+    private Label songTime;
 
     @FXML
     private Button upBtn;
@@ -68,7 +76,42 @@ public class Controller {
     @FXML
     private Circle vinyl;
 
-    @FXML
+    public void songDuration() {
+        //songTime.setText(getFormatedDuration());
+    }
+
+    public void openSongWindow(WindowMode mode){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("song-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+            SongController controller = fxmlLoader.getController();
+            controller.setMode(mode, stage);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch(IOException e){
+            System.out.println("Failed to open song window: " + e.getMessage());
+        }
+    }
+
+    public void openPlaylistWindow(Controller.WindowMode mode){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("playlist-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            Stage stage = new Stage();
+            PlaylistController controller = fxmlLoader.getController();
+            controller.setMode(mode, stage);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        }
+        catch(IOException e){
+            System.out.println("Failed to open song window: " + e.getMessage());
+        }
+    }
+
     public void initialize() {
         //setting image and animation for vinyl
         Image image = new Image(getClass().getResourceAsStream("/vinyl.png"));
@@ -79,34 +122,15 @@ public class Controller {
         rotation.setInterpolator(Interpolator.LINEAR);
     }
 
-    public void editbuttonClicked(ActionEvent actionEvent) {
+    @FXML
+    private void btnLastSong(ActionEvent actionEvent) {
     }
 
-    public void newButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void upButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void downButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void newBtnClicked(ActionEvent actionEvent) {
-    }
-
-    public void editButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void deleteButtonClicked(ActionEvent actionEvent) {
-    }
-
-    public void btnLastSong(ActionEvent actionEvent) {
-    }
-
-    public void btnPlayClicked(ActionEvent actionEvent) {
-        //set spinning animation
+    @FXML
+    private void btnPlayClicked(ActionEvent actionEvent) {
         if (btnPlay.getText().equals("▶")) {
             btnPlay.setText("⏸");
+            //activate or stop spinning animation
             rotation.play();
         } else {
             btnPlay.setText("▶");
@@ -115,50 +139,76 @@ public class Controller {
 
     }
 
-    public void btnNextSong(ActionEvent actionEvent) {
+    @FXML
+    private void btnNextSong(ActionEvent actionEvent) {
     }
 
-    public void timeSet(MouseDragEvent mouseDragEvent) {
+    @FXML
+    private void timeSet(MouseDragEvent mouseDragEvent) {
     }
 
-    public void onTextInput(ActionEvent actionEvent) {
-
-    }
-
-    public void onBtnSearchClicked(ActionEvent actionEvent) {
-
-    }
-
-    public void newBtnPlaylstClicked(ActionEvent actionEvent) {
+    @FXML
+    private void onTextInput(ActionEvent actionEvent) {
 
     }
 
-    public void editBtnPlaylstClicked(ActionEvent actionEvent) {
 
+    @FXML
+    private void btnNewSongsClicked(ActionEvent actionEvent) {
+        openSongWindow(WindowMode.create);
     }
 
-    public void delBtnPlaylstClicked(ActionEvent actionEvent) {
-
+    @FXML
+    private void btnUpClicked(ActionEvent actionEvent) {
     }
 
-    public void upBtnClicked(ActionEvent actionEvent) {
-
+    @FXML
+    private void btnSongToPlaylist(ActionEvent actionEvent) {
     }
 
-    public void downBtnClicked(ActionEvent actionEvent) {
-
+    @FXML
+    private void btnDelSongsClicked(ActionEvent actionEvent) {
+        showConfirmation("Are you sure you want to delete the song?", "The song will be deleted from the list, but you could add it again later.");
     }
 
-    public void newBtnSongsClicked(ActionEvent actionEvent) {
-
+    @FXML
+    private void btnDelPlaylstClicked(ActionEvent actionEvent) {
+        showConfirmation("Are you sure you want to delete selected playlist?", "The deleted playlist won't delete the songs from your machine");
     }
 
-    public void editButtonSongsClicked(ActionEvent actionEvent) {
-
+    @FXML
+    private void btnDownClicked(ActionEvent actionEvent) {
     }
 
-    public void deleteButtonSongsClicked(ActionEvent actionEvent) {
+    @FXML
+    private void btnSearchClicked(ActionEvent actionEvent) {
+    }
 
+    @FXML
+    private void btnNewPlaylstClicked(ActionEvent actionEvent) {
+        openPlaylistWindow(WindowMode.create);
+    }
+
+    @FXML
+    private void btnEditPlaylstClicked(ActionEvent actionEvent) {
+        openPlaylistWindow(WindowMode.edit);
+    }
+
+    @FXML
+    private void btnDelSongPlaylstClicked(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    private void btnEditSongsClicked(ActionEvent actionEvent) {
+        openSongWindow(WindowMode.edit);
+    }
+
+    private void showConfirmation(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public void editbuttonClicked(ActionEvent actionEvent) {
