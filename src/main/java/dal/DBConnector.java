@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 
 public class DBConnector {
+
+    private static SQLServerDataSource ds = new SQLServerDataSource();
+
     public static void connectDb() throws SQLException {
         String serverName = "";
         String databaseName = "";
@@ -27,8 +30,6 @@ public class DBConnector {
             System.out.println("config.settings Was not found.");
         }
 
-        SQLServerDataSource ds = new SQLServerDataSource();
-
         ds.setServerName(serverName);
         ds.setPortNumber(1433);
         ds.setDatabaseName(databaseName);
@@ -40,5 +41,8 @@ public class DBConnector {
             System.out.println("Connected to " + con.getCatalog());
         }
 
+    }
+    public static Connection getConnection() throws SQLException {
+        return ds.getConnection();
     }
 }

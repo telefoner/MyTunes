@@ -106,7 +106,7 @@
                   </Label>
                   <HBox prefHeight="37.0" prefWidth="354.0">
                      <children>
-                        <TextField onAction="#onTextInput" prefHeight="27.0" prefWidth="248.0" promptText="Search by title or artist" style="-fx-background-color: #cfd2cd;">
+                        <TextField fx:id="filterFieldInput" prefHeight="27.0" prefWidth="248.0" promptText="Search by title or artist" style="-fx-background-color: #cfd2cd;">
                            <HBox.margin>
                               <Insets top="1.0" />
                            </HBox.margin>
@@ -175,7 +175,7 @@
             <HBox prefHeight="450.0" prefWidth="310.0">
                <children>
 
-                  <TableView fx:id="songsInPlaylist" prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+                  <TableView fx:id="songsInPlaylist" onMouseClicked="#songsInPlaylistClicked" prefHeight="438.0" prefWidth="260.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                      <columns>
                         <TableColumn editable="false" prefWidth="145.5999755859375" text="Title" />
                         <TableColumn editable="false" prefWidth="62.4000244140625" text="Artist" />
@@ -210,7 +210,7 @@
                </VBox.margin>
             </Label>
 
-            <TableView fx:id="songsList" prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
+            <TableView fx:id="songsList" onMouseClicked="#songsListClicked" prefHeight="450.0" prefWidth="350.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: #cfd2cd; -fx-padding: 0; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent;">
                <VBox.margin>
                   <Insets right="10.0" />
                </VBox.margin>

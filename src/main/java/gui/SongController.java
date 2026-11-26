@@ -71,6 +71,7 @@ public class SongController {
     }
     @FXML
     private void saveBtnClicked(ActionEvent actionEvent) {
+
         ((Stage)btnSave.getScene().getWindow()).close();
     }
 
